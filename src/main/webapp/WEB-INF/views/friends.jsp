@@ -17,9 +17,9 @@
 	</div>
 </div>
 
-<sf:form action="logout" modelAttribute="logout">
+<sf:form action="success">
 	<div class="container">
-		<button type="submit">Logout</button>
+		<button type="submit"> Home </button>
 	</div>
 </sf:form>
 

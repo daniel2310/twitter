@@ -5,23 +5,36 @@
 	<div class="content">
 		<div>
 			<div class="content-holder">
-				<div class="padding_container">WELCOME ON YOUR TWITTER PAGE ${sessionScope.username}</div>
+				<div class="padding_container">WELCOME ON YOUR TWITTER PAGE
+					${sessionScope.username}</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<sf:form action="logout" >
-		<div class="container">
-  			<button type="submit">Logout</button>
-  			
-  		</div>
+
+<sf:form action="home" method="GET">
+	<div class="container">
+		<button type="submit">Logout</button>
+	</div>
+</sf:form>
+
+<sf:form action="readmessages" method="PUT">
+	<div class="container">
+		<a href="/twitter/readmessages"> READ MESSAGES </a>
+	</div>
+</sf:form>
+
+<sf:form action="sendmessages" method="GET">
+	<div class="container">
+		<a href="/twitter/sendmessages"> SEND MESSAGES </a>
+	</div>
 </sf:form>
 
 <sf:form action="friends" method="GET">
-		<div class="container">
-  			<button type="submit">Friends</button>
-  		</div>
+	<div class="container">
+		<button type="submit">Friends</button>
+	</div>
 </sf:form>
 
-<a href="friends">Friends</a>
+

@@ -5,8 +5,8 @@
 	<div class="content">
 		<div>
 			<div class="content-holder">
-				<div class="padding_container">THIS ARE MY FRIENDS ON TWITTER</div>
-				<label><b>Friends List</b></label>
+				<div class="padding_container">THIS ARE MY FRIENDS ON TWITTER: </div>
+				
 				<c:forEach items="${friends}" var="friend">
 					
 						<td>${friend}</td>
@@ -17,9 +17,9 @@
 	</div>
 </div>
 
-<sf:form action="logout" modelAttribute="logout">
+<sf:form action="success">
 	<div class="container">
-		<button type="submit">Logout</button>
+		<button type="submit"> Home </button>
 	</div>
 </sf:form>
 

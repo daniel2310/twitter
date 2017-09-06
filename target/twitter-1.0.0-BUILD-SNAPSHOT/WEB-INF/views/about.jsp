@@ -11,8 +11,8 @@
 	</div>
 </div>
 
-<sf:form action="home" modelAttribute="home">
+<sf:form action="home" method='GET'>
 		<div class="container">
-  			<button type="submit">Home</button>
+  			<button type="submit"> Home </button>
   		</div>
 	</sf:form>
