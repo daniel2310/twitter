@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class UsersController {
-	 //find user
+	 
+	
+	//find user
 	@RequestMapping(value = "/users",  method = RequestMethod.GET)
 	public ModelAndView viewStats(Map<String, Object> model) {
 	    return new ModelAndView("users");
@@ -36,7 +38,7 @@ public class UsersController {
 		}
 	
 	
-	//search user
+	//add user
 	
 	@RequestMapping(value = {"/adduser", ""})
 	public @ResponseBody ModelAndView addNewUser() {
