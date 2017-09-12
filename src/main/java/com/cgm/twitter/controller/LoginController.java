@@ -1,48 +1,49 @@
 package com.cgm.twitter.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import com.cgm.twitter.db.repository.contract.UserDataStore;
+import com.cgm.twitter.domain.User;
+import com.cgm.twitter.repository.UserDAO;
 
 @Controller
 public class LoginController {
+	@Autowired
+	UserDAO userDAO;
 
-	@RequestMapping(value = { "/login", "" })
-	public String viewStats(Map<String, Object> model) {
-		return "login";
-	}
+	@Autowired
+	UserDataStore userDataStore;
 
-	@RequestMapping(value = "/success", method = RequestMethod.GET)
-	public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mav = new ModelAndView("login");
-		mav.addObject("user", new User());
-		return mav;
-	}
+	public final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submit(Model model, HttpServletRequest request, @ModelAttribute("login") User user) {
+	public String loginUser(@ModelAttribute("login") User user, HttpServletRequest request, Model model) {
+		logger.info("Called login User JPA service!");
 
-		for (User newUser : UserBuilder.users) {
-			if (user != null && user.getName() != null && user.getPassword() != null) {
-				if (user.getName().equals(newUser.getName()) && user.getPassword().equals(newUser.getPassword())) {
+		if (user.getName() == null && user.getPassword() == null) {
+			model.addAttribute("error", "Please insert a valid username and password!");
+		} else {
+			if (user.getName() != null && user.getPassword() != null && userDAO.findByName(user.getName()) != null) {
+				if (user.getPassword().equals(userDAO.findByName(user.getName()).getPassword())) {
 					model.addAttribute("msg", "welcome" + user.getName());
 					request.getSession().setAttribute("username", user.getName());
+					request.getSession().setAttribute("user_id", userDAO.findByName(user.getName()).getUser_id());
 					return "success";
 				}
 				model.addAttribute("error", "Invalid Username or Password");
-				}
+				return "login";
 			}
-		
+			model.addAttribute("error", "Invalid Username or Password");
+			return "login";
+
+		}
 		return "login";
 	}
 }

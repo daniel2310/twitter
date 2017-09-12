@@ -13,8 +13,6 @@
 <body>
 	<h3>Please Register:</h3>
 
-
-
 	<div class="container">
 		<label><b>New User name</b></label> <input id="username" type="text"
 			name="name"><br> <label><b>Your Password</b></label> <input
@@ -24,24 +22,25 @@
 	</div>
 
 
-</body>
-</html>
-
 <sf:form action="home" method='GET'>
 	<div class="container">
 		<button type="submit">Home</button>
 	</div>
 </sf:form>
 
+</body>
+</html>
+
 <div id="addUser"></div>
 
 <script type="text/javascript">
 	$("#register").click(
 			function() {
-
+				
 				var username = document.getElementById('username').value;
 				var pass = document.getElementById('pass').value;
 				var Data = {
+					
 					"name" : username,
 					"password" : pass
 				};

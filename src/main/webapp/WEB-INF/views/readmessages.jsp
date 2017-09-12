@@ -14,7 +14,7 @@
 				<div class="padding_container">THIS ARE YOUR MESSAGES:</div>
 				<c:forEach items="${messageList}" var="map">
 					
-						<p>${map.content}</p>
+						<p>${map.user.name} : ${map.content}</p>
 					
 				</c:forEach>
 			</div>
@@ -36,7 +36,7 @@
   
 	$.ajax({
         type: "GET",
-        url: "http://localhost:8080/twitter/readmessages",
+        url: "http://localhost:8080/twitter/home",
         
         contentType: "application/json; charset=utf-8",
         dataType: "json",

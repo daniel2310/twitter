@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<h1>FIND USERS PAGE</h1>
+	<h1>USERS PAGE</h1>
 
 </body>
 </html>
@@ -28,29 +28,38 @@
 	<div class="container">
 		<button type="submit">Home</button>
 	</div>
-</sf:form>	
+</sf:form>
 
-	<div id="findingUser"></div>
+<div id="findingUser"></div>
 
-	<script type="text/javascript">
-		$("#searchUser").click(
-				function() {
-					$.ajax({
-						type : "GET",
-						url : "http://localhost:8080/twitter/finduser/"
-								+ document.getElementById("users").value,
 
-						contentType : "application/json; charset=utf-8",
-						dataType : "json",
-						success : function(data) {
-							$("#findingUser").text(data.username);
-							console.log(data);
-						},
-						failure : function(errMsg) {
-							alert(errMsg);
-						}
-					});
+<c:forEach items="${usersList}" var="user">
+
+	<p>${user.name}</p>
+
+</c:forEach>
+
+
+
+<script type="text/javascript">
+	$("#searchUser").click(
+			function() {
+				$.ajax({
+					type : "GET",
+					url : "http://localhost:8080/twitter/finduser/"
+							+ document.getElementById("users").value,
+
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(data) {
+						$("#findingUser").text(data.username);
+						console.log(data);
+					},
+					failure : function(errMsg) {
+						alert(errMsg);
+					}
 				});
+			});
+
 	
-		
-	</script>
+</script>

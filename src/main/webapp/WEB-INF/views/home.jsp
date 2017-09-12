@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
+
 <html>
 <head>
 <title>Home</title>
@@ -9,12 +14,21 @@
 </body>
 </html>
 
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-
-
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 300 px;
+}
+</style>
 
 <sf:form action="login" method="POST" modelAttribute="login">
 	<div class="container">
@@ -35,23 +49,12 @@
 </sf:form>
 
 
-<div class="container">
-	<a href="/twitter/adduser"> Register </a>
+<div class="button">
+	<a href="/twitter/adduser" class="button">Register</a>
 </div>
 
 
 <div id="allMessages"></div>
-
-<div class="container">
-	<c:forEach items="${allMessages}" var="map">
-		<c:forEach items="${map.value}" var="message">
-
-			<p>${map.key}: ${message.content}</p>
-		</c:forEach>
-	</c:forEach>
-</div>
-
-
 
 
 <script type="text/javascript">

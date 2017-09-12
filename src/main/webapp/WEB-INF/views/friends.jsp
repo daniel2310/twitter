@@ -9,7 +9,7 @@
 				
 				<c:forEach items="${friends}" var="friend">
 					
-						<td>${friend}</td>
+						<p>${friend.name}</p>
 					
 				</c:forEach>
 			</div>
@@ -23,3 +23,16 @@
 	</div>
 </sf:form>
 
+
+<sf:form action="addfriend" method="GET">
+	<div class="container">
+		<button type="submit"> Add friends </button>
+	</div>
+</sf:form>
+
+
+<sf:form action="removefriend" method="GET">
+	<div class="container">
+		<button type="submit">Remove friends </button>
+	</div>
+</sf:form>
